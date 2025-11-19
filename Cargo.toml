@@ -1,0 +1,24 @@
+[package]
+name = "opt40xx"
+version = "0.1.0"
+edition = "2024"
+description = "Driver for the OPT40xx ambient light sensors."
+repository = "https://github.com/phycrax/opt40xx-rs"
+license = "MIT OR Apache-2.0"
+keywords = ["ambient", "light", "sensor"]
+categories = ["embedded", "no-std"]
+
+
+[dependencies]
+embedded-hal = "1"
+defmt = { version = "1", optional = true }
+device-driver = { version = "1", default-features = false, features = ["dsl"] }
+
+
+[dev-dependencies]
+embedded-hal-mock = { version = "0.11", default-features = false, features = ["eh1"] }
+
+
+[features]
+## Use [`defmt`](https://docs.rs/defmt/latest/defmt/) for logging
+defmt = ["dep:defmt"]
