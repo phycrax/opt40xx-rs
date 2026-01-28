@@ -7,6 +7,7 @@ pub struct Sensor<BUS: I2c> {
     ll: LowLevel<Interface<BUS>>,
 }
 impl<BUS: I2c> Sensor<BUS> {
+    /// Create a new sensor instance
     pub fn new(i2c: BUS, addr: Address) -> Self {
         Self {
             ll: LowLevel::new(Interface {

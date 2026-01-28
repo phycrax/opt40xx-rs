@@ -5,13 +5,19 @@
 /// Contains main configuration options including measurement range,
 /// conversion time, and interrupt behavior.
 pub struct ConfigA {
+    /// Quick Wake mode.
     pub qwake: QuickWake,
     /// Measurement range setting for light detection.
     pub range: Range,
+    /// Conversion time.
     pub conv_time: ConversionTime,
+    /// Operating mode.
     pub operating_mode: OperatingMode,
+    /// Interrupt latch mode.
     pub latch: Latch,
+    /// Interrupt polarity.
     pub int_pol: IntPolarity,
+    /// Fault count for interrupt triggering.
     pub fault_count: FaultCount,
 }
 
@@ -41,10 +47,15 @@ pub struct ConfigB {
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Default)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
+/// Status register
 pub struct Status {
+    /// Overload flag.
     pub overload: bool,
+    /// Conversion ready flag.
     pub conv_ready: bool,
+    /// High threshold flag.
     pub flag_h: bool,
+    /// Low threshold flag.
     pub flag_l: bool,
 }
 
@@ -53,21 +64,30 @@ pub struct Status {
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Address {
     #[default]
+    /// GND
     Gnd,
+    /// VDD
     Vdd,
+    /// SDA
     Sda,
+    /// SCL
     Scl,
+    /// PicoStar
     PicoStar,
 }
 
 #[derive(Clone, Copy, Debug, Default, PartialEq, Eq)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
+/// Input channel
 pub enum Channel {
     /// (default)
     #[default]
     Ch0,
+    /// Channel 1
     Ch1,
+    /// Channel 2
     Ch2,
+    /// Channel 3
     Ch3,
 }
 
@@ -120,8 +140,11 @@ pub enum OperatingMode {
     /// (default)
     #[default]
     PowerDown,
+    /// Forced one-shot mode
     ForcedOneShot,
+    /// Regular one-shot mode
     RegularOneShot,
+    /// Continuous mode
     Continuous,
 }
 
@@ -151,6 +174,7 @@ pub enum IntPolarity {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum IntDirection {
+    /// Input
     Input,
     /// (default)
     #[default]
@@ -161,9 +185,11 @@ pub enum IntDirection {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum BurstRead {
+    /// Disabled
     Disabled,
     /// (default)
     #[default]
+    /// Enabled
     Enabled,
 }
 
@@ -173,7 +199,9 @@ pub enum BurstRead {
 pub enum QuickWake {
     /// (default)
     #[default]
+    /// Disabled
     Disabled,
+    /// Enabled
     Enabled,
 }
 
